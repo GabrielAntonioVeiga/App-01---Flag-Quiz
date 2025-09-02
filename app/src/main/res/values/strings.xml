@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">Flag Quiz</string>
     <string name="enunciado">Adivinhe o Páis</string>
+    <string name="welcome">Seja Bem Vindo</string>
+    <string name="start">Começar</string>
+    <string name="hint_name">Nome</string>
 </resources>
