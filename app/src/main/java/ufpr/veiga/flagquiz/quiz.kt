@@ -9,6 +9,7 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ufpr.veiga.flagquiz.constants.AppConstants
 import ufpr.veiga.flagquiz.controller.CountryFlag
 import ufpr.veiga.flagquiz.controller.QuizController
 
@@ -48,12 +49,14 @@ class quiz : AppCompatActivity() {
             tentativas++
             resultado.add(resposta)
             if (tentativas == 5) {
-
+                intent.putExtra(AppConstants.RESULT_SCORE_KEY, pontuacao)
+                intent.putExtra(AppConstants.RESULT_QUESTIONS_KEY, resultado.toBooleanArray())
+                intent.getStringExtra(AppConstants.RESULT_QUESTIONS_KEY)
+                startActivity(intent)
+                finish()
             }
             renderizar()
         }
-
-
     }
     fun renderizar(){
         val imageView = findViewById<ImageView>(R.id.imageView)

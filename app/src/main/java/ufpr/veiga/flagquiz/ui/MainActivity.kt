@@ -10,6 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import ufpr.veiga.flagquiz.R
+import ufpr.veiga.flagquiz.constants.AppConstants
+import ufpr.veiga.flagquiz.quiz
+import kotlin.jvm.java
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -33,8 +36,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        intent.putExtra("userName", editText.text.toString())
+        intent.putExtra(AppConstants.PLAYER_NAME_KEY, editText.text.toString())
 
         startActivity(intent)
+        finish()
+
     }
 }
