@@ -8,7 +8,7 @@ data class CountryFlag(
 )
 
 class QuizController {
-    private val countries = listOf(
+    public val countries = listOf(
         CountryFlag("Argentina", R.drawable.flag_argentina),
         CountryFlag("Brasil", R.drawable.flag_brasil),
         CountryFlag("Canadá", R.drawable.flag_canada),
