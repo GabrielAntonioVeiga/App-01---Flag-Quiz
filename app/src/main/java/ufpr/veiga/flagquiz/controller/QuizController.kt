@@ -24,8 +24,8 @@ class QuizController {
         CountryFlag("Romênia", R.drawable.flag_romenia)
     )
 
-    fun getRandomQuestion(): CountryFlag {
-        return countries.random()
+    fun getRandomQuestions(quantity: Int): List<CountryFlag> {
+        return countries.shuffled().take(quantity)
     }
 
     fun answerQuestion(flag: String, answer: String): Boolean {
