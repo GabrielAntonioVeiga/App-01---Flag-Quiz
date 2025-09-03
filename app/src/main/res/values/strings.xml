@@ -13,5 +13,5 @@
     <string name="label_q5">Pergunta 5</string>
     <string name="label_correct_answer">Acertou em cheio!</string>
     <string name="label_incorrect_answer">Você errou.</string>
-    <string name="play_again">Jogar Novamente</string>
+    <string name="button_play_again">Jogar Novamente</string>
 </resources>

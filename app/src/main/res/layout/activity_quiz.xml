@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".quiz">
+    tools:context=".ui.QuizActivity">
 
     <ImageView
         android:id="@+id/imageView"
@@ -30,6 +30,18 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/text_page_index"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        android:textSize="24sp"
+        app:layout_constraintEnd_toEndOf="@id/main"
+        app:layout_constraintTop_toTopOf="@id/main"
+        tools:text="X/5"
+        />
+
 
     <EditText
         android:id="@+id/editTextText"

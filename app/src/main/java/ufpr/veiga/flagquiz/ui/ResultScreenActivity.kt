@@ -1,6 +1,8 @@
 package ufpr.veiga.flagquiz.ui
 
+import android.content.Intent
 import android.os.Bundle
+import android.view.View
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -25,6 +27,12 @@ class ResultScreenActivity : AppCompatActivity() {
         }
 
         displayResults();
+    }
+
+    fun redirectToMain(view: View) {
+        val mainScreen = Intent(this, MainActivity::class.java)
+        startActivity(mainScreen);
+        finish()
     }
 
     private fun displayResults() {
