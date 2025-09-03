@@ -46,13 +46,13 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
         val resultScreen = Intent(this, ResultScreenActivity::class.java)
 
-        val userAttemptInput = binding.editTextText.text.toString().lowercase().trim()
-        if(userAttemptInput.isEmpty()){
+        val userAttemptAnswer = binding.editTextText.text.toString().lowercase().trim()
+        if(userAttemptAnswer.isEmpty()){
             Toast.makeText(this, "Digite uma resposta", Toast.LENGTH_SHORT).show()
             return;
         }
         val respostaCorreta =
-            quizController.answerQuestion(perguntas[tentativas].name.lowercase(), userAttemptInput)
+            quizController.answerQuestion(perguntas[tentativas].name.lowercase(), userAttemptAnswer)
         if (respostaCorreta) {
             Toast.makeText(this, "Resposta correta", Toast.LENGTH_SHORT).show()
             pontuacao+=20
@@ -67,6 +67,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
             return finish()
         }
         tentativas++
+        binding.editTextText.text.clear();
         renderizar()
 
     }
