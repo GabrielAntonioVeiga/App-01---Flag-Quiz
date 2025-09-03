@@ -17,7 +17,6 @@ class QuizController {
         CountryFlag("Egito", R.drawable.flag_egito),
         CountryFlag("França", R.drawable.flag_franca),
         CountryFlag("Japão", R.drawable.flag_japao),
-        CountryFlag("Kosovo", R.drawable.flag_kosovo),
         CountryFlag("Madagascar", R.drawable.flag_madagascar),
         CountryFlag("México", R.drawable.flag_mexico),
         CountryFlag("Mongólia", R.drawable.flag_mongolia),

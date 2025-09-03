@@ -1,6 +1,7 @@
 package ufpr.veiga.flagquiz.ui
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -26,6 +27,7 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
     var resultado = mutableListOf<Boolean>()
 
     private lateinit var binding: ActivityQuizBinding
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,7 +58,9 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         if (respostaCorreta) {
             Toast.makeText(this, "Resposta correta", Toast.LENGTH_SHORT).show()
             pontuacao+=20
+            playOkSound();
         } else {
+            playErrorSound()
             Toast.makeText(this, "Resposta incorreta", Toast.LENGTH_SHORT).show()
         }
         resultado.add(respostaCorreta)
@@ -94,6 +98,25 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
 
         imageView.setImageResource(perguntas[tentativas].flagResId)
         binding.textPageIndex.text = "${(tentativas + 1)} / 5";
+    }
+
+    fun playOkSound() {
+        val mp = MediaPlayer.create(this, R.raw.ok_sound)
+        mp.start()
+        mp.setOnCompletionListener { it.release() }
+    }
+
+    fun playErrorSound() {
+        val mp = MediaPlayer.create(this, R.raw.error_sound)
+        mp.start()
+        mp.setOnCompletionListener { it.release() }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
+        mediaPlayer = null
     }
 
     override fun onClick(view: View) {
