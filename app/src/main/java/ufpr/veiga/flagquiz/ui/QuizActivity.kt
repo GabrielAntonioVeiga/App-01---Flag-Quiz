@@ -16,7 +16,6 @@ import ufpr.veiga.flagquiz.constants.AppConstants
 import ufpr.veiga.flagquiz.controller.CountryFlag
 import ufpr.veiga.flagquiz.controller.QuizController
 import ufpr.veiga.flagquiz.databinding.ActivityQuizBinding
-import ufpr.veiga.flagquiz.databinding.ActivityResultScreenBinding
 
 class QuizActivity : AppCompatActivity() {
     private val quizController = QuizController()

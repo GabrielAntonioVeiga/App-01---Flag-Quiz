@@ -13,7 +13,7 @@ import ufpr.veiga.flagquiz.constants.AppConstants
 import ufpr.veiga.flagquiz.databinding.ActivityResultScreenBinding
 
 class ResultScreenActivity : AppCompatActivity() {
-    private lateinit var binding: ActivityResultScreenBinding
+    private lateinit var binding: Acti
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -9,20 +9,30 @@ data class CountryFlag(
 
 class QuizController {
     private val countries = listOf(
+        CountryFlag("Albânia", R.drawable.flag_albania),
+        CountryFlag("Alemanha", R.drawable.flag_alemanha),
+        CountryFlag("Arábia Saudita", R.drawable.flag_arabia_saudita),
         CountryFlag("Argentina", R.drawable.flag_argentina),
+        CountryFlag("Austrália", R.drawable.flag_australia),
+        CountryFlag("Bangladesh", R.drawable.flag_bangladesh),
+        CountryFlag("Barbados", R.drawable.flag_barbados),
+        CountryFlag("Bolívia", R.drawable.flag_bolivia),
         CountryFlag("Brasil", R.drawable.flag_brasil),
         CountryFlag("Canadá", R.drawable.flag_canada),
+        CountryFlag("Chile", R.drawable.flag_chile),
         CountryFlag("China", R.drawable.flag_china),
-        CountryFlag("Chipre", R.drawable.flag_chipre),
+        CountryFlag("Coreia do Sul", R.drawable.flag_coreia_do_sul),
         CountryFlag("Egito", R.drawable.flag_egito),
+        CountryFlag("Espanha", R.drawable.flag_espanha),
         CountryFlag("França", R.drawable.flag_franca),
+        CountryFlag("Índia", R.drawable.flag_india),
+        CountryFlag("Inglaterra", R.drawable.flag_inglaterra),
         CountryFlag("Japão", R.drawable.flag_japao),
-        CountryFlag("Kosovo", R.drawable.flag_kosovo),
-        CountryFlag("Madagascar", R.drawable.flag_madagascar),
-        CountryFlag("México", R.drawable.flag_mexico),
-        CountryFlag("Mongólia", R.drawable.flag_mongolia),
-        CountryFlag("Romênia", R.drawable.flag_romenia)
+        CountryFlag("Palau", R.drawable.flag_palau),
+        CountryFlag("Rússia", R.drawable.flag_russia),
+        CountryFlag("Uganda", R.drawable.flag_uganda)
     )
+
 
     fun getRandomQuestions(quantity: Int): List<CountryFlag> {
         return countries.shuffled().take(quantity)
