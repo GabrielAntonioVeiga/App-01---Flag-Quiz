@@ -1,6 +1,7 @@
 package ufpr.veiga.flagquiz.ui
 
 import android.content.Intent
+import android.media.MediaPlayer
 import android.os.Bundle
 import android.util.Log
 import android.view.View
@@ -17,7 +18,7 @@ import ufpr.veiga.flagquiz.controller.CountryFlag
 import ufpr.veiga.flagquiz.controller.QuizController
 import ufpr.veiga.flagquiz.databinding.ActivityQuizBinding
 
-class QuizActivity : AppCompatActivity() {
+class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private val quizController = QuizController()
     private var pontuacao: Double = 0.0;
     var tentativas = 0
@@ -25,6 +26,7 @@ class QuizActivity : AppCompatActivity() {
     var resultado = mutableListOf<Boolean>()
 
     private lateinit var binding: ActivityQuizBinding
+    private var mediaPlayer: MediaPlayer? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -38,23 +40,31 @@ class QuizActivity : AppCompatActivity() {
         }
         clearResults();
         perguntas = quizController.getRandomQuestions(5)
+        binding.buttonAttempt.setOnClickListener(this)
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.gameshow_theme)
+        mediaPlayer?.isLooping = true // repetir em loop
+        mediaPlayer?.start()
+
         renderizar()
     }
-    fun tentativa(view: View){
+    fun handleAttempt(){
 
         val resultScreen = Intent(this, ResultScreenActivity::class.java)
 
-        val userAttemptInput = binding.editTextText.text.toString().lowercase().trim()
-        if(userAttemptInput.isEmpty()){
+        val userAttemptAnswer = binding.editTextText.text.toString().lowercase().trim()
+        if(userAttemptAnswer.isEmpty()){
             Toast.makeText(this, "Digite uma resposta", Toast.LENGTH_SHORT).show()
             return;
         }
         val respostaCorreta =
-            quizController.answerQuestion(perguntas[tentativas].name.lowercase(), userAttemptInput)
+            quizController.answerQuestion(perguntas[tentativas].name.lowercase(), userAttemptAnswer)
         if (respostaCorreta) {
             Toast.makeText(this, "Resposta correta", Toast.LENGTH_SHORT).show()
             pontuacao+=20
+            playOkSound();
         } else {
+            playErrorSound()
             Toast.makeText(this, "Resposta incorreta", Toast.LENGTH_SHORT).show()
         }
         resultado.add(respostaCorreta)
@@ -65,6 +75,7 @@ class QuizActivity : AppCompatActivity() {
             return finish()
         }
         tentativas++
+        binding.editTextText.text.clear();
         renderizar()
 
     }
@@ -92,4 +103,30 @@ class QuizActivity : AppCompatActivity() {
         imageView.setImageResource(perguntas[tentativas].flagResId)
         binding.textPageIndex.text = "${(tentativas + 1)} / 5";
     }
+
+    fun playOkSound() {
+        val mp = MediaPlayer.create(this, R.raw.ok_sound)
+        mp.start()
+        mp.setOnCompletionListener { it.release() }
+    }
+
+    fun playErrorSound() {
+        val mp = MediaPlayer.create(this, R.raw.error_sound)
+        mp.start()
+        mp.setOnCompletionListener { it.release() }
+    }
+
+
+    override fun onDestroy() {
+        super.onDestroy()
+        mediaPlayer?.release()
+        mediaPlayer = null
+    }
+
+    override fun onClick(view: View) {
+        if (view.id == R.id.button_attempt) {
+            handleAttempt()
+        }
+    }
+
 }
