@@ -18,7 +18,7 @@ import ufpr.veiga.flagquiz.controller.QuizController
 import ufpr.veiga.flagquiz.databinding.ActivityQuizBinding
 import ufpr.veiga.flagquiz.databinding.ActivityResultScreenBinding
 
-class QuizActivity : AppCompatActivity() {
+class QuizActivity : AppCompatActivity(), View.OnClickListener {
     private val quizController = QuizController()
     private var pontuacao: Double = 0.0;
     var tentativas = 0
@@ -39,9 +39,10 @@ class QuizActivity : AppCompatActivity() {
         }
         clearResults();
         perguntas = quizController.getRandomQuestions(5)
+        binding.buttonAttempt.setOnClickListener(this)
         renderizar()
     }
-    fun tentativa(view: View){
+    fun handleAttempt(){
 
         val resultScreen = Intent(this, ResultScreenActivity::class.java)
 
@@ -93,4 +94,11 @@ class QuizActivity : AppCompatActivity() {
         imageView.setImageResource(perguntas[tentativas].flagResId)
         binding.textPageIndex.text = "${(tentativas + 1)} / 5";
     }
+
+    override fun onClick(view: View) {
+        if (view.id == R.id.button_attempt) {
+            handleAttempt()
+        }
+    }
+
 }
