@@ -42,6 +42,11 @@ class QuizActivity : AppCompatActivity(), View.OnClickListener {
         clearResults();
         perguntas = quizController.getRandomQuestions(5)
         binding.buttonAttempt.setOnClickListener(this)
+
+        mediaPlayer = MediaPlayer.create(this, R.raw.gameshow_theme)
+        mediaPlayer?.isLooping = true // repetir em loop
+        mediaPlayer?.start()
+
         renderizar()
     }
     fun handleAttempt(){
