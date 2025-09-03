@@ -4,4 +4,14 @@
     <string name="welcome">Seja Bem Vindo</string>
     <string name="start">Começar</string>
     <string name="hint_name">Nome</string>
+    <string name="label_result_score">Você alcançou a nota:</string>
+    <string name="label_summary_title">Resumo das Respostas</string>
+    <string name="label_q1">Pergunta 1</string>
+    <string name="label_q2">Pergunta 2</string>
+    <string name="label_q3">Pergunta 3</string>
+    <string name="label_q4">Pergunta 4</string>
+    <string name="label_q5">Pergunta 5</string>
+    <string name="label_correct_answer">Acertou em cheio!</string>
+    <string name="label_incorrect_answer">Você errou.</string>
+    <string name="button_play_again">Jogar Novamente</string>
 </resources>

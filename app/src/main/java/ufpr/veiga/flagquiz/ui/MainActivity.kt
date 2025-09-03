@@ -1,4 +1,4 @@
-package ufpr.veiga.flagquiz
+package ufpr.veiga.flagquiz.ui
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import ufpr.veiga.flagquiz.R
+import ufpr.veiga.flagquiz.constants.AppConstants
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -23,7 +25,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun comecar(view: View) {
-        val intent = Intent(this, quiz::class.java)
+        val intent = Intent(this, QuizActivity::class.java)
 
         val editText = findViewById<EditText>(R.id.nomeTextView)
 
@@ -32,8 +34,10 @@ class MainActivity : AppCompatActivity() {
             return
         }
 
-        intent.putExtra("userName", editText.text.toString())
+        intent.putExtra(AppConstants.Companion.PLAYER_NAME_KEY, editText.text.toString())
 
         startActivity(intent)
+        finish()
+
     }
 }
